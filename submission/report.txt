@@ -1,0 +1,14 @@
+Algorithm Ideas:
+
+Monte Carlo Tree Search (MCTS): We implemented MCTS as our core strategy for the Havannah game engine. MCTS is well-suited for games with large branching factors and has shown effectiveness in similar board games.
+Fast Win Check: We optimized the win-checking mechanism using a precomputed board data structure. This includes neighbors, corners, and edges, allowing for quick evaluation of winning conditions (bridges, forks, and rings).
+Multi-level Look-ahead: We implemented functions to check for immediate wins (can_win_in_one_move), wins in two moves (mate_in_two), and wins in three moves (mate_in_three). This allows the AI to prioritize winning moves or block opponent's winning strategies.
+Opening Strategies: For the 11x11 board, we implemented a series of predefined opening moves to guide the early game strategy. This helps to establish a strong position before relying fully on MCTS.
+Dynamic Time Management: The engine adjusts the time allocated for move calculation based on the game progress and remaining time, ensuring efficient use of the time limit.
+Node Expansion: The MCTS algorithm expands nodes based on the UCT (Upper Confidence Bound for Trees) formula, balancing exploration and exploitation.
+
+Time Complexity:
+
+Fast Win Check: The optimized check_fast_win function runs in near-constant time due to precomputed board data.
+MCTS Iterations: The number of MCTS iterations is limited by time rather than a fixed count, allowing for adaptation to different time constraints.
+Look-ahead Functions: The mate_in_two and mate_in_three functions have a time complexity of O(n^2) and O(n^3) respectively, where n is the board dimension.
